@@ -1,6 +1,8 @@
 export class AccessToken {
-    tokenType: String;
-    expiresIn: Number;
-    accessToken: String;
-    refreshToken: String;
+    token_type: string;
+    expires_in: string;
+    access_token: string;
+    refresh_token: string;
   }
+  
+  

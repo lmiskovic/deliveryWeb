@@ -10,22 +10,26 @@ import { ManageComponent } from './components/manage/manage.component';
 import { TrackComponent } from './components/track/track.component';
 import { RoutingConfig } from './app-routing';
 import { NavigationComponent } from './components/navigation/navigation.component';
-
+import { AgmCoreModule } from '@agm/core';
+import { AuthService } from './auth.service';
+import { LoggedInRouteGuardService } from './LoggedInRouteGuard'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ManageComponent,
     TrackComponent,
-    NavigationComponent,
+    NavigationComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    RoutingConfig
+    RoutingConfig,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC07fFBt2xrSODsnejXs76iQGEQTpokwHU'})
   ],
-  providers: [],
+  providers: [AuthService, LoggedInRouteGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <ul class="nav nav-pills">
-        <li role="presentation" class="active"><a [routerLink]="['']">Home</a></li>
-        <li role="presentation"><a [routerLink]="['manage']">Delivery Manager</a></li>
-        <li role="presentation"><a [routerLink]="['track']">Driver Tracking</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['login']">Home</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['manage']">Delivery Manager</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['track']">Driver Tracking</a></li>
       </ul>
   </div>
 </nav>
