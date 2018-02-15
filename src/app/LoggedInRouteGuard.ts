@@ -27,7 +27,7 @@ export class LoggedInRouteGuardService implements CanActivate{
     }
 
     checkLogin(url: string): boolean{
-        if(this.auth.isLoggedIn){
+        if(this.auth.isLoggedIn || localStorage.getItem('isLoggedIn') == 'true'){
             return true;
         }
         else{

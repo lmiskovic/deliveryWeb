@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.isLoggedIn = false;
-    this.auth.isAuthorized(this.auth.getAccessToken());
+   
   }
 
   login() {
@@ -62,13 +61,16 @@ export class LoginComponent implements OnInit {
         console.log(this.access_token.refresh_token)
         console.log('-----------------------')
 
-        this.auth.saveToken(this.access_token);
         this.auth.isLoggedIn = true;
+        this.auth.saveToken(this.access_token);
+
+        this.router.navigate(['home']);
     }, err => {
       this.errorMessage = "error";
       console.log("Not loged in!")
       this.auth.deleteToken();
       this.auth.isLoggedIn = false;
+      this.router.navigate(['login']);
     });
   }
 
@@ -77,7 +79,8 @@ export class LoginComponent implements OnInit {
     const body = new HttpParams()
       .set('name', this.name)
       .set('email', this.username)
-      .set('password', this.password);
+      .set('password', this.password)
+      .set('required_role', 'Dispatcher');
 
     const httpOptions = {
       headers: new HttpHeaders({
