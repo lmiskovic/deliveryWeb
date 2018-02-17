@@ -1,0 +1,22 @@
+body {
+    margin-top: 5%;
+}
+
+.logout-message{
+    text-align: center;
+}
+
+
+	
+button{
+    width: 100%;
+	border:1px solid#337AB7;
+	background:#337AB7;
+	color:#fff;
+	font-size:14px;
+    margin-top:5px;
+}
+
+.buttons{
+    padding-top: 5em;
+}

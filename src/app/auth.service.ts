@@ -60,6 +60,11 @@ export class AuthService {
     this.isLoggedIn=false;
   }
 
+  handleUnauthorized(){
+    this.deleteToken();
+    this.isLoggedIn=false;
+    this.router.navigate(['login']);
+  }
   isAuthorized(accesToken: AccessToken){
     const body = new HttpParams()
     .set('refresh_token', accesToken.refresh_token);

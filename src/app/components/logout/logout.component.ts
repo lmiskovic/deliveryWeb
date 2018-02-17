@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
 import { map } from 'rxjs/operator/map';
-import { AccessToken } from '../models/AccessToken';
+import { AccessToken } from '../../models/AccessToken';
 
 @Component({
   selector: 'app-logout',
@@ -15,7 +15,7 @@ export class LogoutComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
-    // alert page
+
   }
 
   backTohome(){
@@ -47,10 +47,9 @@ export class LogoutComponent implements OnInit {
       this.auth.deleteToken();
       this.router.navigate(['greet']);
     }, err => {
-      console.log(err);
-      console.log("Not loged out!");
-      this.router.navigate(['greet']);
-
+      if (err.status==401){
+        this.auth.handleUnauthorized();
+      }
     })
   }
 }

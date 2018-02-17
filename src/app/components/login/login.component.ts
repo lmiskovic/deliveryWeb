@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
 
     this.http.post<AccessToken>('http://localhost/public/api/register', body, httpOptions).subscribe(response => {
       console.log("Registered!");
-      this.router.navigateByUrl['login'];
+      this.router.navigate(['login']);
     }, err => {
       this.errorMessage = "error";
       console.log("Not registered!")

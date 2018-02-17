@@ -1,6 +1,63 @@
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading">List group item heading</h4>
-    <p class="list-group-item-text">test test teeeest</p>
-  </a>
-</div>
+<body>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">+</button>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="form-area">  
+                        <form role="form">
+                        <br style="clear:both">
+                                    <h3 style="margin-bottom: 25px; text-align: center;">Enter data for new delivery order</h3>
+                                    <div class="form-group">
+                                        <input type="text" name ="newDelivery.deliveryAddress" [(ngModel)]='newDelivery.deliveryAddress' class="form-control" placeholder="Delivery Address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" [(ngModel)]='user_id' name='user_id'>  
+                                            <option *ngFor="let k of userNames" [value]="k.id">{{k.name}}</option>  
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name ="newDelivery.customerName" [(ngModel)]='newDelivery.customerName' class="form-control" placeholder="Customer Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name ="newDelivery.contactPhoneNumber" [(ngModel)]='newDelivery.contactPhoneNumber' class="form-control" placeholder="Contact PhoneNumber" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name ="newDelivery.note" [(ngModel)]='newDelivery.note' class="form-control" placeholder="Note" required>
+                                    </div>
+                        <button type="submit" data-dismiss="modal" (click)="createDelivery()" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Delivery ID</td>
+                <td>Delivery Created At</td>
+                <td>Delivery Updated At</td>
+                <td>Driver ID</td>
+                <td>Delivery Address</td>
+                <td>Customer Name</td>
+                <td>ContactPhoneNumber</td>
+                <td>Note</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let delivery of deliveries">
+                <td>{{delivery.id}}</td>
+                <td>{{delivery.created_at}}</td>
+                <td>{{delivery.updated_at}}</td>
+                <td>{{delivery.user_id}}</td>
+                <td>{{delivery.deliveryAddress}}</td>
+                <td>{{delivery.customerName}}</td>
+                <td>{{delivery.contactPhoneNumber}}</td>
+                <td>{{delivery.note}}</td>
+            </tr>
+        </tbody>
+    </table>
