@@ -1,6 +1,6 @@
 <body>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">+</button>
+    <button type="button" class="btn btn-primary glyphicon-plus" data-toggle="modal" data-target=".bd-example-modal-lg"></button>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -44,8 +44,9 @@
                 <td>Driver ID</td>
                 <td>Delivery Address</td>
                 <td>Customer Name</td>
-                <td>ContactPhoneNumber</td>
+                <td>Contact Phone Number</td>
                 <td>Note</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +59,15 @@
                 <td>{{delivery.customerName}}</td>
                 <td>{{delivery.contactPhoneNumber}}</td>
                 <td>{{delivery.note}}</td>
+                <td>
+                    <a href="#" class="btn btn-primary a-btn-slide-text">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" class="btn btn-primary a-btn-slide-text">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                     </a>
+
+                </td>
             </tr>
         </tbody>
     </table>

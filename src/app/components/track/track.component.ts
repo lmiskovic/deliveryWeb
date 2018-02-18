@@ -9,8 +9,8 @@ import { RoutingConfig} from '../../app-routing';
 export class TrackComponent implements OnInit {
 
   title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = 44.1116606;
+  lng: number = 15.2673023;
 
   constructor() { }
 

@@ -24,12 +24,8 @@ export class LogoutComponent implements OnInit {
 
   logout(){
 
-    console.log(this.auth.getAccessToken().access_token);
-
     const body = new HttpParams()
       .set('access_token', this.auth.getAccessToken().access_token);
-
-    console.log(this.auth.getAccessToken().access_token);
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -42,9 +38,7 @@ export class LogoutComponent implements OnInit {
     console.log("Logging out!");
 
     this.http.post<AccessToken>('http://localhost/public/api/logout', body, httpOptions).subscribe(response => {
-      console.log("Loged out!");
-      console.log(response);
-      this.auth.deleteToken();
+      this.auth.handleLogout();
       this.router.navigate(['greet']);
     }, err => {
       if (err.status==401){

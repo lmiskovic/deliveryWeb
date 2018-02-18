@@ -54,16 +54,8 @@ export class LoginComponent implements OnInit {
         this.access_token.access_token=response.access_token;
         this.access_token.refresh_token=response.refresh_token;
 
-        console.log('-----------------------')
-        console.log(this.access_token.token_type)
-        console.log(this.access_token.expires_in)
-        console.log(this.access_token.access_token)
-        console.log(this.access_token.refresh_token)
-        console.log('-----------------------')
-
         this.auth.isLoggedIn = true;
         this.auth.saveToken(this.access_token);
-
         this.router.navigate(['home']);
     }, err => {
       this.errorMessage = "error";
