@@ -1,7 +1,8 @@
 export class Delivery{
-    id: number;
+    id: string;
     created_at: string;
     updated_at: string;
+    status: string;
     user_id: string;
     deliveryAddress: string;
     customerName: string;

@@ -5,35 +5,72 @@
     <div class="modal fade bd-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="form-area">  
-                        <form role="form">
-                        <br style="clear:both">
-                                    <h3 style="margin-bottom: 25px; text-align: center;">Enter data for new delivery order</h3>
-                                    <div class="form-group">
-                                        <input type="text" name ="newDelivery.deliveryAddress" [(ngModel)]='newDelivery.deliveryAddress' class="form-control" placeholder="Delivery Address" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" [(ngModel)]='user_id' name='user_id'>  
-                                            <option *ngFor="let k of userNames" [value]="k.id">{{k.name}}</option>  
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name ="newDelivery.customerName" [(ngModel)]='newDelivery.customerName' class="form-control" placeholder="Customer Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name ="newDelivery.contactPhoneNumber" [(ngModel)]='newDelivery.contactPhoneNumber' class="form-control" placeholder="Contact PhoneNumber" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name ="newDelivery.note" [(ngModel)]='newDelivery.note' class="form-control" placeholder="Note" required>
-                                    </div>
-                        <button type="submit" data-dismiss="modal" (click)="createDelivery()" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+                <div class="form-area">
+                    <form role="form">
+                        <h3 style="text-align: center;">Enter data for new delivery order</h3>
+                        <br>
+                        <div class="row text-right">
+                            <div class="col-md-3">
+                                <p>Delivery Address</p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="newDelivery.deliveryAddress" [(ngModel)]='newDelivery.deliveryAddress' class="form-control" placeholder="Delivery Address"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-md-3">
+                                <p>Driver</p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <select class="form-control" [(ngModel)]='user_id' name='user_id' (change)="onChange($event)">
+                                        <option *ngFor="let username of usernames" [value]="username.user_id">{{username.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-md-3">
+                                <p>Customer Name</p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="newDelivery.customerName" [(ngModel)]='newDelivery.customerName' class="form-control" placeholder="Customer Name"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-md-3">
+                                <p>Contact Phone Number</p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="newDelivery.contactPhoneNumber" [(ngModel)]='newDelivery.contactPhoneNumber' class="form-control"
+                                        placeholder="Contact Phone Number" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-md-3">
+                                <p>Note</p>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="newDelivery.note" [(ngModel)]='newDelivery.note' class="form-control" placeholder="Note" required>
+                                </div>
+                                <button type="submit" data-dismiss="modal" (click)="createDelivery()" class="btn btn-primary">Submit</button>
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
-
 
     <table class="table table-hover">
         <thead>
@@ -43,31 +80,151 @@
                 <td>Delivery Updated At</td>
                 <td>Driver ID</td>
                 <td>Delivery Address</td>
+                <td>status</td>
                 <td>Customer Name</td>
                 <td>Contact Phone Number</td>
                 <td>Note</td>
-                <td></td>
+                <td style="text-align: center;">Actions</td>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let delivery of deliveries">
+            <tr *ngFor="let delivery of deliveries; let i = index" [attr.data-target]="i">
                 <td>{{delivery.id}}</td>
                 <td>{{delivery.created_at}}</td>
                 <td>{{delivery.updated_at}}</td>
                 <td>{{delivery.user_id}}</td>
                 <td>{{delivery.deliveryAddress}}</td>
+                <td>{{delivery.status}}</td>
                 <td>{{delivery.customerName}}</td>
                 <td>{{delivery.contactPhoneNumber}}</td>
                 <td>{{delivery.note}}</td>
                 <td>
-                    <a href="#" class="btn btn-primary a-btn-slide-text">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </a>
-                    <a href="#" class="btn btn-primary a-btn-slide-text">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                     </a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" attr.data-target="#modal-{{i}}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
 
+                    <div class="modal fade" tabindex="-1" id="{{ 'modal-' + i }}" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="form-area">
+                                    <form role="form">
+                                        <h3 style="text-align: center;">Edit delivery</h3>
+                                        <br>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Delivery ID</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input disabled type="text" name="delivery.id" [(ngModel)]='delivery.id' class="form-control" placeholder="Delivery ID" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Delivery Created At</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input disabled type="text" name="delivery.created_at" [(ngModel)]='delivery.created_at' class="form-control" placeholder="Delivery Created At"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Delivery Updated At</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input disabled type="text" name="delivery.updated_at" [(ngModel)]='delivery.updated_at' class="form-control" placeholder="Delivery Updated At"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Driver</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <select class="form-control" [(ngModel)]='delivery.user_id' name='delivery.user_id' (change)="onChangeDriver($event)">
+                                                        <option *ngFor="let username of usernames" [value]="username.user_id" [selected]="username == delivery.user_id">{{username.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Delivery Address</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="text" name="delivery.deliveryAddress" [(ngModel)]='delivery.deliveryAddress' class="form-control" placeholder="Delivery Address"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Delivery Status</p>
+                                            </div>
+                                            <div class="col-md-9">
+
+                                                <div class="form-group">
+                                                    <select class="form-control" [(ngModel)]='delivery.status' name='delivery.status' (change)="onChangeStatus($event)">
+                                                        <option *ngFor="let status of statuses" [selected]="status == delivery.status">{{status}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Customer Name</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="text" name="delivery.customerName" [(ngModel)]='delivery.customerName' class="form-control" placeholder="Customer Name"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Contact Phone Number</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="text" name="delivery.contactPhoneNumber" [(ngModel)]='delivery.contactPhoneNumber' class="form-control" placeholder="Contact Phone Number"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-3">
+                                                <p>Note</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="text" name="delivery.note" [(ngModel)]='delivery.note' class="form-control" placeholder="Note" required>
+                                                </div>
+                                                <button type="submit" data-dismiss="modal" (click)="updateDelivery(delivery)" class="btn btn-primary">Submit</button>
+                                                <br>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button> -->
                 </td>
             </tr>
         </tbody>
     </table>
+</body>
