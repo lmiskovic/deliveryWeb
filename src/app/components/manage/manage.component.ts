@@ -136,6 +136,29 @@ export class ManageComponent implements OnInit {
 
     this.http.post('http://localhost/public/api/createDelivery', body, httpOptions).subscribe(response => {
       console.log(response);
+      this.newDelivery = new Delivery;
+      this.getAllDeliveries();
+    }, err => {
+      if (err.status==401){
+        this.auth.handleUnauthorized();
+      }
+    })
+  }
+
+  deleteDelivery(delivery: Delivery){
+    const body = new HttpParams()
+      .set('id', delivery.id);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + this.auth.getAccessToken().access_token
+      })
+    };
+
+    this.http.post('http://localhost/public/api/deleteDelivery', body, httpOptions).subscribe(response => {
+      console.log(response);
       this.getAllDeliveries();
     }, err => {
       if (err.status==401){

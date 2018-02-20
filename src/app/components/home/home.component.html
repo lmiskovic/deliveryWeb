@@ -1,5 +1,59 @@
 <body>
 
-  
+
+    <div class="row text-left">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Registered drivers</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Driver ID</td>
+                            <td>Name</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let driver of usernames">
+                            <td>{{driver.user_id}}</td>
+                            <td>{{driver.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Current deliveries by status</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>In progress</td>
+                            <td>Delivered total</td>
+                            <td>Canceled total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{stats.Inprogress}}</td>
+                            <td>{{stats.Delivered}}</td>
+                            <td>{{stats.Canceled}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
 
 </body>

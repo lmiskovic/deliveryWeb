@@ -7,7 +7,9 @@
             <div class="modal-content">
                 <div class="form-area">
                     <form role="form">
-                        <h3 style="text-align: center;">Enter data for new delivery order</h3>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Enter data for new delivery order</h4>
+                        </div>
                         <br>
                         <div class="row text-right">
                             <div class="col-md-3">
@@ -62,9 +64,11 @@
                                 <div class="form-group">
                                     <input type="text" name="newDelivery.note" [(ngModel)]='newDelivery.note' class="form-control" placeholder="Note" required>
                                 </div>
-                                <button type="submit" data-dismiss="modal" (click)="createDelivery()" class="btn btn-primary">Submit</button>
-                                <br>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" data-dismiss="modal" (click)="createDelivery()" class="btn btn-primary">Submit</button>
+                            <br>
                         </div>
                     </form>
                 </div>
@@ -75,14 +79,14 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <td>Delivery ID</td>
-                <td>Delivery Created At</td>
-                <td>Delivery Updated At</td>
+                <td>ID</td>
+                <td>Created At</td>
+                <td>Updated At</td>
                 <td>Driver ID</td>
                 <td>Delivery Address</td>
-                <td>status</td>
+                <td>Status</td>
                 <td>Customer Name</td>
-                <td>Contact Phone Number</td>
+                <td>Contact Phone</td>
                 <td>Note</td>
                 <td style="text-align: center;">Actions</td>
             </tr>
@@ -108,7 +112,9 @@
                             <div class="modal-content">
                                 <div class="form-area">
                                     <form role="form">
-                                        <h3 style="text-align: center;">Edit delivery</h3>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Edit delivery</h4>
+                                        </div>
                                         <br>
                                         <div class="row text-right">
                                             <div class="col-md-3">
@@ -209,20 +215,55 @@
                                                 <div class="form-group">
                                                     <input type="text" name="delivery.note" [(ngModel)]='delivery.note' class="form-control" placeholder="Note" required>
                                                 </div>
-                                                <button type="submit" data-dismiss="modal" (click)="updateDelivery(delivery)" class="btn btn-primary">Submit</button>
-                                                <br>
+
                                             </div>
                                         </div>
-
+                                        <div class="modal-footer">
+                                            <button type="submit" data-dismiss="modal" (click)="updateDelivery(delivery)" class="btn btn-primary">Submit</button>
+                                            <br>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <button type="button" class="btn btn-danger btn-ok" data-toggle="modal" attr.data-target="#confirm-delete-{{i}}">
                         <span class="glyphicon glyphicon-remove"></span>
-                    </button> -->
+                    </button>
+
+                    <div class="modal fade" id="{{ 'confirm-delete-' + i}}" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>You are about to delete delivery:
+                                        <br><br>
+                                        <p>ID:
+                                            <strong>{{delivery.id}}</strong>
+                                        </p>
+                                        <p>Customer Name:
+                                            <strong>{{delivery.customerName}}</strong>
+                                        </p>
+                                        <p>Deliviery Address:
+                                            <strong>{{delivery.deliveryAddress}}</strong>
+                                        </p>
+                                        <br><br>
+                                        this procedure is irreversible.
+                                        <p>Do you want to proceed?</p>
+                                        <p class="debug-url"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-danger btn-ok" data-dismiss="modal" (click)="deleteDelivery(delivery)">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>

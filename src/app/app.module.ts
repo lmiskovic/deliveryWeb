@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { RoutingConfig } from './app-routing';
-import { AgmCoreModule } from '@agm/core';
 import { AuthService } from './auth.service';
 
 import { LoggedInRouteGuardService } from './LoggedInRouteGuard';
@@ -18,7 +17,9 @@ import { TrackComponent } from './components/track/track.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { GreetComponent } from './components/greet/greet.component'
+
+import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,10 @@ import { GreetComponent } from './components/greet/greet.component'
     TrackComponent,
     NavigationComponent,
     HomeComponent,
-    LogoutComponent,
-    GreetComponent
+    LogoutComponent
   ],
   imports: [
+    AgmSnazzyInfoWindowModule,
     FormsModule,
     BrowserModule,
     HttpClientModule,

@@ -29,6 +29,10 @@
       }
     }
   ],
+  "styles": [
+    "styles.css",
+    "./node_modules/snazzy-info-window/dist/snazzy-info-window.css"
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
