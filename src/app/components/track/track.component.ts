@@ -12,13 +12,13 @@ import { Location} from '../../models/Location';
 
 export class TrackComponent implements OnInit {
 
-  locations: Location[];  
-
+  locations: Location[];
+  
   constructor(private auth: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
       this.updateLocations()
-      setInterval(() => { this.updateLocations(); }, 5000);      
+      setInterval(() => { this.updateLocations(); }, 5000);  
   }
 
   updateLocations() {

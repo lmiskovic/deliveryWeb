@@ -3,7 +3,7 @@ import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { UsernameIdPair } from '../../models/UsernameIdPair';
-import { Stats } from 'fs';
+import { Stats } from '../../models/Stats';
 
 @Component({
   selector: 'app-home',
@@ -50,11 +50,7 @@ export class HomeComponent implements OnInit {
     };
 
     this.http.get<Stats>('http://localhost/public/api/getDeliveryCounts', httpOptions).subscribe(response => {
-      console.log(response);
       this.stats = response['data'];
-
-      console.log(this.stats);
-
     }, err => {
       if (err.status==401){
         this.auth.handleUnauthorized();

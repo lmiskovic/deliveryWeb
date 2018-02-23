@@ -19,7 +19,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 
 import { AgmCoreModule } from '@agm/core';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     LogoutComponent
   ],
   imports: [
-    AgmSnazzyInfoWindowModule,
     FormsModule,
     BrowserModule,
     HttpClientModule,

@@ -16,13 +16,11 @@ export class AuthService {
     console.log(JSON.stringify(localStorage.getItem('isLoggedIn')));
 
     if(localStorage.getItem('isLoggedIn') === 'true'){
-      console.log('IF');
       this.isLoggedIn=true;
       this.accesToken = this.getAccessToken();
       this.saveToken(this.accesToken);
       this.isAuthorized(this.accesToken);
     } else{
-      console.log('ELSE');
       this.isLoggedIn = false;
       this.deleteToken();
       this.router.navigate(['login'])
@@ -34,11 +32,6 @@ export class AuthService {
     localStorage.setItem('accesToken.expires_in',access_token.expires_in);
     localStorage.setItem('accesToken.access_token',access_token.access_token);
     localStorage.setItem('accesToken.refresh_token',access_token.refresh_token);
-    if(this.isLoggedIn){
-      localStorage.setItem('isLoggedIn','true');
-    } else {
-      localStorage.setItem('isLoggedIn','false');
-    }
   }
 
   getAccessToken(){

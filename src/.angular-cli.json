@@ -1,8 +1,7 @@
 {
     "apps": [{
       "styles": [
-        "styles.css",
-        "snazzy-info-window.css"
+        "styles.css"
         ]
     }]
   }
