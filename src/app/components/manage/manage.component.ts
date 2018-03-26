@@ -135,7 +135,6 @@ export class ManageComponent implements OnInit {
     };
 
     this.http.post('http://localhost/public/api/createDelivery', body, httpOptions).subscribe(response => {
-      console.log(response);
       this.newDelivery = new Delivery;
       this.getAllDeliveries();
     }, err => {

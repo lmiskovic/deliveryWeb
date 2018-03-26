@@ -40,10 +40,6 @@ export class TrackComponent implements OnInit {
                this.locations[i].lat = Number(coords[0]);
                this.locations[i].lng = Number(coords[1]);
       }
-
-
-
-      console.log(this.locations);
     }, err => {
       if (err.status == 401) {
         this.auth.handleUnauthorized();
