@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       })
     };
 
-    this.http.get<UsernameIdPair>('http://localhost/public/api/getDriverNames', httpOptions).subscribe(response => {
+    this.http.get<UsernameIdPair>('http://139.162.132.207/api/getDriverNames', httpOptions).subscribe(response => {
       this.usernames = response['data'];
     }, err => {
       if (err.status==401){
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
       })
     };
 
-    this.http.get<Stats>('http://localhost/public/api/getDeliveryCounts', httpOptions).subscribe(response => {
+    this.http.get<Stats>('http://139.162.132.207/api/getDeliveryCounts', httpOptions).subscribe(response => {
       this.stats = response['data'];
     }, err => {
       if (err.status==401){

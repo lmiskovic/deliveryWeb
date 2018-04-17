@@ -69,7 +69,7 @@ export class ManageComponent implements OnInit {
       })
     };
 
-    this.http.post('http://localhost/public/api/updateDelivery', body, httpOptions).subscribe(response => {
+    this.http.post('http://139.162.132.207/api/updateDelivery', body, httpOptions).subscribe(response => {
       console.log(response);
     }, err => {
       if (err.status==401){
@@ -87,7 +87,7 @@ export class ManageComponent implements OnInit {
       })
     };
 
-    this.http.get<UsernameIdPair>('http://localhost/public/api/getDriverNames', httpOptions).subscribe(response => {
+    this.http.get<UsernameIdPair>('http://139.162.132.207/api/getDriverNames', httpOptions).subscribe(response => {
       this.usernames = response['data'];
     }, err => {
       if (err.status==401){
@@ -105,7 +105,7 @@ export class ManageComponent implements OnInit {
       })
     };
 
-    this.http.get<Delivery[]>('http://localhost/public/api/deliveriesAll', httpOptions).subscribe(response => {
+    this.http.get<Delivery[]>('http://139.162.132.207/api/deliveriesAll', httpOptions).subscribe(response => {
       this.deliveries = response['data'];
     }, err => {
       if (err.status==401){
@@ -134,7 +134,7 @@ export class ManageComponent implements OnInit {
       })
     };
 
-    this.http.post('http://localhost/public/api/createDelivery', body, httpOptions).subscribe(response => {
+    this.http.post('http://139.162.132.207/api/createDelivery', body, httpOptions).subscribe(response => {
       this.newDelivery = new Delivery;
       this.getAllDeliveries();
     }, err => {
@@ -156,7 +156,7 @@ export class ManageComponent implements OnInit {
       })
     };
 
-    this.http.post('http://localhost/public/api/deleteDelivery', body, httpOptions).subscribe(response => {
+    this.http.post('http://139.162.132.207/api/deleteDelivery', body, httpOptions).subscribe(response => {
       console.log(response);
       this.getAllDeliveries();
     }, err => {

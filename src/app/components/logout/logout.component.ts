@@ -37,7 +37,7 @@ export class LogoutComponent implements OnInit {
 
     console.log("Logging out!");
 
-    this.http.post<AccessToken>('http://localhost/public/api/logout', body, httpOptions).subscribe(response => {
+    this.http.post<AccessToken>('http://139.162.132.207/api/logout', body, httpOptions).subscribe(response => {
       this.auth.handleUnauthorized();
     }, err => {
       if (err.status==401){

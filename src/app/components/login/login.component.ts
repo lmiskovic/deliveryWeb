@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       })
     };
 
-    this.http.post<AccessToken>('http://localhost/public/api/login', body, httpOptions).subscribe(
+    this.http.post<AccessToken>('http://139.162.132.207/api/login', body, httpOptions).subscribe(
 
       response => {
 
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
       })
     };
 
-    this.http.post<AccessToken>('http://localhost/public/api/register', body, httpOptions).subscribe(response => {
+    this.http.post<AccessToken>('http://139.162.132.207/api/register', body, httpOptions).subscribe(response => {
       console.log("Registered!");
       this.router.navigate(['login']);
     }, err => {

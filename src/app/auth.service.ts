@@ -71,7 +71,7 @@ export class AuthService {
       })
     };
 
-    return this.http.post<AccessToken>('http://localhost/public/api/refresh', body, httpOptions).subscribe(response =>{
+    return this.http.post<AccessToken>('http://139.162.132.207/api/refresh', body, httpOptions).subscribe(response =>{
       console.log('Refreshed!');
       this.accesToken=response;
       this.isLoggedIn = true;

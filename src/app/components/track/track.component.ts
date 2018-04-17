@@ -30,7 +30,7 @@ export class TrackComponent implements OnInit {
       })
     };
 
-    this.http.get('http://localhost/public/api/getLastLocations', httpOptions).subscribe(response => {
+    this.http.get('http://139.162.132.207/api/getLastLocations', httpOptions).subscribe(response => {
       this.locations = response['data'];
       for(var i = 0; i < this.locations.length; i++){
 
